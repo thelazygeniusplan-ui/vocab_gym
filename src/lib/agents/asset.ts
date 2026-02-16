@@ -42,6 +42,20 @@ export class AssetAgent {
                             }
                         ]
                     },
+                    {
+                        clips: [
+                            {
+                                asset: {
+                                    type: "image",
+                                    src: "https://images.pexels.com/photos/2603464/pexels-photo-2603464.jpeg",
+                                },
+                                start: 0,
+                                length: 5,
+                                scale: 1.2,
+                                effect: "zoomIn"
+                            }
+                        ]
+                    }
                 ]
             },
             output: {
