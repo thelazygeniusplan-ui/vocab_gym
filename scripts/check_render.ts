@@ -17,3 +17,5 @@ async function check() {
 }
 
 check();
+
+export { };
