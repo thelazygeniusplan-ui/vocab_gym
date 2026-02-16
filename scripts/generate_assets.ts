@@ -58,9 +58,9 @@ async function main() {
     const architect = new PedagogicalArchitect();
     const corpus = architect.getCurriculum();
 
-    // Filter for Bundle 01 (First 5 words)
-    const bundle01 = corpus.slice(0, 5);
-    console.log(`Targeting Bundle 01: [${bundle01.map(c => c.word).join(', ')}]`);
+    // Filter for 'ephemeral' (Item 6)
+    const bundle01 = [corpus[5]];
+    console.log(`Targeting: [${bundle01.map(c => c.word).join(', ')}]`);
 
     const renderMap: Record<string, string> = {};
 
