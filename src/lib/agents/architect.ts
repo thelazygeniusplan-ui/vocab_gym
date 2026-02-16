@@ -7,6 +7,7 @@ export interface CurriculumItem {
     antonyms: string[];
     contextSentence: string;
     processingLevel: 'shadow' | 'cinema' | 'synthesis' | 'mastery';
+    videoUrl?: string;
 }
 
 export class PedagogicalArchitect {
@@ -17,6 +18,7 @@ export class PedagogicalArchitect {
 
     constructor() {
         // Bundle 01: Bolster, Anomalous, Ambivalent, Qualify, Paucity
+
         this.corpus = [
             {
                 id: '1',
@@ -26,7 +28,8 @@ export class PedagogicalArchitect {
                 synonyms: ['reinforce', 'buttress', 'fortify'],
                 antonyms: ['undermine', 'weaken'],
                 contextSentence: 'He hoped the new evidence would bolster his argument.',
-                processingLevel: 'shadow'
+                processingLevel: 'shadow',
+                videoUrl: "https://shotstack-api-v1-output.s3-ap-southeast-2.amazonaws.com/ozif3qkhuw/8b91f6d1-33cb-4f14-a10c-9287cd632ad1.mp4"
             },
             {
                 id: '2',
@@ -36,7 +39,8 @@ export class PedagogicalArchitect {
                 synonyms: ['abnormal', 'atypical', 'irregular'],
                 antonyms: ['normal', 'typical', 'standard'],
                 contextSentence: 'The scientist investigated the anomalous readings from the sensor.',
-                processingLevel: 'shadow'
+                processingLevel: 'shadow',
+                videoUrl: "https://shotstack-api-v1-output.s3-ap-southeast-2.amazonaws.com/ozif3qkhuw/d413eb8e-a516-4a25-9d9e-e4f00eee0bba.mp4"
             },
             {
                 id: '3',
@@ -46,7 +50,8 @@ export class PedagogicalArchitect {
                 synonyms: ['unsure', 'undecided', 'torn'],
                 antonyms: ['certain', 'resolute', 'unequivocal'],
                 contextSentence: 'She felt ambivalent about the job offer, liking the pay but hating the commute.',
-                processingLevel: 'shadow'
+                processingLevel: 'shadow',
+                videoUrl: "https://shotstack-api-v1-output.s3-ap-southeast-2.amazonaws.com/ozif3qkhuw/9866c1eb-7465-45b7-9fb2-20cdcc898091.mp4"
             },
             {
                 id: '4',
@@ -56,7 +61,8 @@ export class PedagogicalArchitect {
                 synonyms: ['modify', 'limit', 'restrict'],
                 antonyms: ['generalize', 'affirm'],
                 contextSentence: 'I must qualify my earlier praise; while good, it is not perfect.',
-                processingLevel: 'shadow'
+                processingLevel: 'shadow',
+                videoUrl: "https://shotstack-api-v1-output.s3-ap-southeast-2.amazonaws.com/ozif3qkhuw/d6a2bda4-c160-4015-9925-f4d0a6d8d558.mp4"
             },
             {
                 id: '5',
@@ -66,7 +72,8 @@ export class PedagogicalArchitect {
                 synonyms: ['scarcity', 'dearth', 'shortage'],
                 antonyms: ['abundance', 'surplus', 'plethora'],
                 contextSentence: 'There was a paucity of information regarding the incident.',
-                processingLevel: 'shadow'
+                processingLevel: 'shadow',
+                videoUrl: "https://shotstack-api-v1-output.s3-ap-southeast-2.amazonaws.com/ozif3qkhuw/aba397eb-97d5-4d12-8f0a-65e910f13035.mp4"
             },
             // Bundle 02
             { id: '6', word: 'ephemeral', definition: 'Lasting for a very short time.', category: 'Time', synonyms: ['transient', 'fleeting'], antonyms: ['permanent'], contextSentence: 'Fame is ephemeral.', processingLevel: 'shadow' },

@@ -42,19 +42,6 @@ export class AssetAgent {
                             }
                         ]
                     },
-                    {
-                        clips: [
-                            {
-                                asset: {
-                                    type: "luma",
-                                    src: "https://shotstack-assets.s3.ap-southeast-2.amazonaws.com/overlays/glitch-static.mp4"
-                                },
-                                start: 0,
-                                length: 5,
-                                opacity: 0.3
-                            }
-                        ]
-                    }
                 ]
             },
             output: {

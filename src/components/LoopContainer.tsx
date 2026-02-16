@@ -59,11 +59,23 @@ export default function LoopContainer() {
                     </div>
                 );
             case 1: // Cinema/Video
+                const currentItem = architect.getCurriculum().find(c => c.word === currentWord);
                 return (
                     <div className="text-center">
                         <h2 className="text-2xl mb-4 text-neon-blue">LOOP 1: CINEMA FEED</h2>
-                        <div className="aspect-video bg-black border border-neon-blue/50 flex items-center justify-center mb-6">
-                            <span className="text-neon-blue">[VIDEO FEED PLACEHOLDER]</span>
+                        <div className="aspect-video bg-black border border-neon-blue/50 flex items-center justify-center mb-6 overflow-hidden">
+                            {currentItem?.videoUrl ? (
+                                <video
+                                    src={currentItem.videoUrl}
+                                    autoPlay
+                                    loop
+                                    muted
+                                    playsInline
+                                    className="w-full h-full object-cover"
+                                />
+                            ) : (
+                                <span className="text-neon-blue">[VIDEO FEED OFFLINE]</span>
+                            )}
                         </div>
                     </div>
                 );
