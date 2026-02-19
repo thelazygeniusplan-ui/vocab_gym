@@ -1,0 +1,41 @@
+{
+  "timeline": {
+    "background": "#000000",
+    "tracks": [
+      {
+        "clips": [
+          {
+            "asset": {
+              "type": "html",
+              "html": "<div style=\"font-family: 'Courier New'; color: #00F0FF; text-align: center; margin-top: 200px;\">\n                                            <h1 style=\"font-size: 80px; text-shadow: 0 0 10px #BD00FF;\">EPHEMERAL</h1>\n                                            <p style=\"font-size: 30px; color: #FFFFFF;\">Lasting for a very short time.</p>\n                                           </div>",
+              "css": "body { background: transparent; }",
+              "width": 1920,
+              "height": 1080
+            },
+            "start": 0,
+            "length": 5,
+            "effect": "zoomIn"
+          }
+        ]
+      },
+      {
+        "clips": [
+          {
+            "asset": {
+              "type": "image",
+              "src": "https://images.pexels.com/photos/2603464/pexels-photo-2603464.jpeg"
+            },
+            "start": 0,
+            "length": 5,
+            "scale": 1.2,
+            "effect": "zoomIn"
+          }
+        ]
+      }
+    ]
+  },
+  "output": {
+    "format": "mp4",
+    "resolution": "sd"
+  }
+}

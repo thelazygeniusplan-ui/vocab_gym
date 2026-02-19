@@ -32,7 +32,7 @@ export class AssetAgent {
                                             <h1 style="font-size: 80px; text-shadow: 0 0 10px #BD00FF;">${word.toUpperCase()}</h1>
                                             <p style="font-size: 30px; color: #FFFFFF;">${definition}</p>
                                            </div>`,
-                                    css: "body { background: transparent; }",
+                                    css: "body { background-color: transparent !important; }",
                                     width: 1920,
                                     height: 1080
                                 },
@@ -47,7 +47,7 @@ export class AssetAgent {
                             {
                                 asset: {
                                     type: "image",
-                                    src: "https://images.pexels.com/photos/2603464/pexels-photo-2603464.jpeg",
+                                    src: "https://placehold.co/1920x1080/121212/00F0FF.jpg?text=Cyber-Noir+Background",
                                 },
                                 start: 0,
                                 length: 5,
