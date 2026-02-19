@@ -58,14 +58,14 @@ async function main() {
     const architect = new PedagogicalArchitect();
     const corpus = architect.getCurriculum();
 
-    // Filter for 'ephemeral' (Item 6)
-    const bundle01 = [corpus[5]];
-    console.log(`Targeting: [${bundle01.map(c => c.word).join(', ')}]`);
+    // Filter for Bundle 01 + Ephemeral
+    const targets = [...corpus.slice(0, 5), corpus[5]];
+    console.log(`Targeting: [${targets.map(c => c.word).join(', ')}]`);
 
     const renderMap: Record<string, string> = {};
 
     // 1. Initiate Renders
-    for (const item of bundle01) {
+    for (const item of targets) {
         const id = await renderWord(item.word, item.definition, item.contextSentence);
         if (id) {
             renderMap[item.word] = id;

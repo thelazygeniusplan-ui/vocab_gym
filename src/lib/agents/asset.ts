@@ -47,7 +47,7 @@ export class AssetAgent {
                             {
                                 asset: {
                                     type: "image",
-                                    src: "https://dummyimage.com/1920x1080/000/fff.jpg",
+                                    src: "https://raw.githubusercontent.com/robb0wen/synthwave-vscode/master/theme.jpg",
                                 },
                                 start: 0,
                                 length: 5,
