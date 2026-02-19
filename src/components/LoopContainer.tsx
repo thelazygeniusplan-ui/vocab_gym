@@ -10,7 +10,7 @@ export default function LoopContainer() {
     const [architect] = useState(() => new PedagogicalArchitect());
     const [bi] = useState(() => new BusinessIntelligence());
     const [currentLoop, setCurrentLoop] = useState<0 | 1 | 2 | 3>(0);
-    const [currentWord] = useState<string>('bolster'); // Start with Bundle 01
+    const [currentWord] = useState<string>('ephemeral'); // Switch back to fixed word
     const [userInput, setUserInput] = useState('');
     const [showSignOff, setShowSignOff] = useState(false);
 
