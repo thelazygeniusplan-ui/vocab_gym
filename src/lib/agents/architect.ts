@@ -85,7 +85,7 @@ export class PedagogicalArchitect {
                 antonyms: ['permanent'],
                 contextSentence: 'Fame is ephemeral.',
                 processingLevel: 'shadow',
-                videoUrl: "https://shotstack-api-v1-output.s3-ap-southeast-2.amazonaws.com/ozif3qkhuw/e3f9fe99-de0a-4e3c-a9ec-ec1c8b8225e9.mp4"
+                videoUrl: "https://shotstack-api-v1-output.s3-ap-southeast-2.amazonaws.com/ozif3qkhuw/22a76ac9-a602-4aea-8994-a70400388085.mp4"
             },
             { id: '7', word: 'pragmatic', definition: 'Dealing with things sensibly and realistically.', category: 'Logic', synonyms: ['practical', 'sensible'], antonyms: ['idealistic'], contextSentence: 'A pragmatic approach to politics.', processingLevel: 'shadow' },
             { id: '8', word: 'venerable', definition: 'Accorded a great deal of respect, especially because of age, wisdom, or character.', category: 'Respect', synonyms: ['respected', 'distinguished'], antonyms: ['disreputable'], contextSentence: 'A venerable statesman.', processingLevel: 'shadow' },

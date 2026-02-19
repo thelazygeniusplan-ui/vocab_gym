@@ -47,7 +47,7 @@ export class AssetAgent {
                             {
                                 asset: {
                                     type: "image",
-                                    src: "https://placehold.co/1920x1080/121212/00F0FF.jpg?text=Cyber-Noir+Background",
+                                    src: "https://dummyimage.com/1920x1080/000/fff.jpg",
                                 },
                                 start: 0,
                                 length: 5,
