@@ -19,7 +19,18 @@ export default function LoopContainer() {
     };
 
     const advanceLoop = () => {
-        if (userInput.toLowerCase() === currentWord.toLowerCase()) {
+        let isValid = false;
+
+        // Validation Logic based on Loop Stage
+        if (currentLoop === 2) {
+            // Loop 2 (Synthesis): "Own words" - accept any reasonable length input
+            isValid = userInput.length > 3;
+        } else {
+            // Loop 0 (Shadow) & Loop 1 (Cinema): Strict word matching
+            isValid = userInput.toLowerCase().trim() === currentWord.toLowerCase();
+        }
+
+        if (isValid) {
             // Correct! Move to next loop or finish
             // BI Tracking
             bi.trackCost(`Loop ${currentLoop} Completion`, 1);
@@ -33,7 +44,10 @@ export default function LoopContainer() {
             }
         } else {
             // Incorrect logic here
-            alert("Incorrect. Try again.");
+            const errorMsg = currentLoop === 2
+                ? "Please provide a more descriptive definition."
+                : "Incorrect. Type the word securely.";
+            alert(errorMsg);
             bi.trackCost(`Loop ${currentLoop} Error`, 0.5);
         }
     };
