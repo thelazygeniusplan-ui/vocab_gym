@@ -28,17 +28,17 @@ export class AssetAgent {
                             {
                                 asset: {
                                     type: "html",
-                                    html: `<div style="font-family: 'Courier New'; color: #00F0FF; text-align: center; margin-top: 200px;">
-                                            <h1 style="font-size: 80px; text-shadow: 0 0 10px #BD00FF;">${word.toUpperCase()}</h1>
-                                            <p style="font-size: 30px; color: #FFFFFF;">${definition}</p>
+                                    html: `<div style="font-family: 'Courier New'; color: #00F0FF; text-align: center; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; padding-bottom: 50px;">
+                                            <h1 style="font-size: 80px; text-shadow: 0 0 10px #BD00FF; margin: 0;">${word.toUpperCase()}</h1>
+                                            <p style="font-size: 30px; color: #FFFFFF; margin-top: 10px;">${definition}</p>
                                            </div>`,
-                                    css: "body { background-color: transparent !important; }",
+                                    css: "body { background-color: transparent !important; margin: 0; padding: 0; }",
                                     width: 1920,
                                     height: 1080
                                 },
                                 start: 0,
                                 length: 5,
-                                effect: "zoomIn"
+                                effect: "slideUp"
                             }
                         ]
                     },
