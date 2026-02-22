@@ -40,8 +40,8 @@ export default function LoopContainer({ currentPhase }: LoopContainerProps) {
             // Synthesis: own-words definition, any reasonable length
             isValid = userInput.length > 3;
         } else if (currentLoop === 3) {
-            // Mastery: correct the Trainee Bot — must use the word in a substantive response
-            isValid = userInput.toLowerCase().includes(currentWord.toLowerCase()) && userInput.length > 10;
+            // Mastery: correct the Trainee Bot — any substantive response qualifies
+            isValid = userInput.trim().length > 10;
         } else {
             // Loop 0 (Shadow) & Loop 1 (Cinema): type the word to confirm recognition
             isValid = userInput.toLowerCase().trim() === currentWord.toLowerCase();
@@ -60,7 +60,7 @@ export default function LoopContainer({ currentPhase }: LoopContainerProps) {
                 currentLoop === 2
                     ? "Provide a longer definition in your own words."
                     : currentLoop === 3
-                    ? `Correct the bot. Use '${currentWord}' in your response (min 10 chars).`
+                    ? "Correct the bot with a full response (min 10 chars)."
                     : "Incorrect. Type the word exactly.";
             alert(errorMsg);
             bi.trackCost(`Loop ${currentLoop} Error`, 0.5);
@@ -121,7 +121,7 @@ export default function LoopContainer({ currentPhase }: LoopContainerProps) {
                         <h2 className="text-2xl mb-4 text-red-500">LOOP 3: MASTERY CHECK</h2>
                         <TraineeBot message={architect.generateTraineeError(currentWord)} emotion="confused" />
                         <p className="text-gray-400 text-sm mt-4">
-                            Correct the bot. Use &apos;{currentWord}&apos; in your response.
+                            Type your correction (min 10 chars).
                         </p>
                     </div>
                 );
@@ -132,7 +132,7 @@ export default function LoopContainer({ currentPhase }: LoopContainerProps) {
         currentLoop === 2
             ? "Define in your own words..."
             : currentLoop === 3
-            ? `Correct the bot — use '${currentWord}' in your answer...`
+            ? "Type your correction to the bot..."
             : "Type the word...";
 
     return (
