@@ -1,20 +1,18 @@
 "use client";
 
 import React, { useState } from 'react';
+import { verifyHash } from '@/lib/hash';
 
 export default function StationBPage() {
     const [inputHash, setInputHash] = useState('');
     const [verificationStatus, setVerificationStatus] = useState<'idle' | 'valid' | 'invalid'>('idle');
     const [parsedStudentId, setParsedStudentId] = useState<string | null>(null);
 
-    const verifyHash = () => {
-        // Hash Algo: SESSION-STUDENTID-RANDOM
-        // Example: SESSION-STU001-A1B2C3
-        const parts = inputHash.split('-');
-
-        if (parts.length === 3 && parts[0] === 'SESSION') {
+    const handleVerify = () => {
+        const result = verifyHash(inputHash.trim());
+        if (result.valid) {
             setVerificationStatus('valid');
-            setParsedStudentId(parts[1]);
+            setParsedStudentId(result.studentId);
         } else {
             setVerificationStatus('invalid');
             setParsedStudentId(null);
@@ -41,11 +39,12 @@ export default function StationBPage() {
                             type="text"
                             value={inputHash}
                             onChange={(e) => setInputHash(e.target.value)}
+                            onKeyDown={(e) => e.key === 'Enter' && handleVerify()}
                             placeholder="Paste Student Hash Here..."
                             className="flex-1 bg-black/50 border border-gray-600 p-3 rounded text-white focus:border-neon-blue focus:outline-none"
                         />
                         <button
-                            onClick={verifyHash}
+                            onClick={handleVerify}
                             className="bg-neon-blue text-black font-bold px-6 rounded hover:bg-cyan-400"
                         >
                             SCAN

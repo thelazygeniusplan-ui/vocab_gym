@@ -1,18 +1,16 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import { generateHash } from '@/lib/hash';
 
 export default function SignOffModule({ onComplete }: { onComplete: () => void }) {
     const [timer, setTimer] = useState(15);
     const [isActive, setIsActive] = useState(false);
-    const [targetHash, setTargetHash] = useState('');
+    const [sprintComplete, setSprintComplete] = useState(false);
+    const [completionHash, setCompletionHash] = useState('');
     const [studentId, setStudentId] = useState('');
     const [isIdLocked, setIsIdLocked] = useState(false);
-
-    useEffect(() => {
-        // Generate partial hash on mount, but wait for Student ID to finalize
-        setTargetHash("PENDING-ID-INPUT");
-    }, []);
+    const [copied, setCopied] = useState(false);
 
     useEffect(() => {
         let interval: NodeJS.Timeout;
@@ -20,25 +18,34 @@ export default function SignOffModule({ onComplete }: { onComplete: () => void }
             interval = setInterval(() => {
                 setTimer((prev) => prev - 1);
             }, 1000);
-        } else if (timer === 0) {
-            onComplete();
+        } else if (isActive && timer === 0) {
+            setIsActive(false);
+            setSprintComplete(true);
         }
         return () => clearInterval(interval);
-    }, [isActive, timer, onComplete]);
+    }, [isActive, timer]);
 
     const lockStudentId = () => {
         if (studentId.trim().length > 0) {
             setIsIdLocked(true);
-            // Hash Algo: SESSION-STUDENTID-RANDOM
-            const randomPart = Math.random().toString(36).substr(2, 6).toUpperCase();
-            setTargetHash(`SESSION-${studentId.toUpperCase()}-${randomPart}`);
+            const random = Math.random().toString(36).substr(2, 6).toUpperCase();
+            setCompletionHash(generateHash(studentId, random));
         }
     };
 
     const startSprint = () => {
-        if (isIdLocked) {
-            setIsActive(true);
-        }
+        if (isIdLocked) setIsActive(true);
+    };
+
+    const completeSprint = () => {
+        setIsActive(false);
+        setSprintComplete(true);
+    };
+
+    const copyAndComplete = async () => {
+        await navigator.clipboard.writeText(completionHash);
+        setCopied(true);
+        setTimeout(() => onComplete(), 1000);
     };
 
     return (
@@ -54,7 +61,8 @@ export default function SignOffModule({ onComplete }: { onComplete: () => void }
                                 type="text"
                                 value={studentId}
                                 onChange={(e) => setStudentId(e.target.value)}
-                                placeholder="e.g. STU-001"
+                                onKeyDown={(e) => e.key === 'Enter' && lockStudentId()}
+                                placeholder="e.g. STU001"
                                 className="flex-1 bg-black/50 border border-gray-600 p-2 rounded text-white focus:border-neon-blue focus:outline-none"
                             />
                             <button
@@ -72,14 +80,27 @@ export default function SignOffModule({ onComplete }: { onComplete: () => void }
                 )}
 
                 <p className="text-gray-400 text-center mb-6">
-                    To generate Completion Hash, solve the final definition sprint in under 15s.
+                    Complete the 15-second sprint to unlock your Completion Hash.
                 </p>
 
-                {isActive ? (
+                {sprintComplete ? (
+                    <div className="text-center">
+                        <div className="text-green-400 mb-2 text-sm tracking-widest">SPRINT COMPLETE. HASH UNLOCKED.</div>
+                        <div className="font-mono text-neon-blue text-base bg-black/50 border border-neon-blue/50 rounded p-3 mb-4 break-all">
+                            {completionHash}
+                        </div>
+                        <button
+                            onClick={copyAndComplete}
+                            className="w-full bg-neon-blue text-black font-bold py-3 rounded hover:bg-cyan-400 transition-colors"
+                        >
+                            {copied ? 'COPIED! COMPLETING...' : 'COPY HASH & COMPLETE SESSION'}
+                        </button>
+                    </div>
+                ) : isActive ? (
                     <div className="text-center">
                         <div className="text-4xl font-mono text-neon-blue mb-4">{timer}s</div>
-                        <p className="mb-4">Target: {targetHash}</p>
-                        <button onClick={onComplete} className="bg-red-500 text-white px-6 py-2 rounded">
+                        <p className="mb-4 text-gray-400 text-sm">Hold position... hash generating...</p>
+                        <button onClick={completeSprint} className="bg-red-500/50 text-white px-6 py-2 rounded text-xs border border-red-500">
                             SIMULATE COMPLETION
                         </button>
                     </div>
@@ -87,7 +108,7 @@ export default function SignOffModule({ onComplete }: { onComplete: () => void }
                     <button
                         onClick={startSprint}
                         disabled={!isIdLocked}
-                        className={`w-full font-bold py-3 rounded ${isIdLocked ? 'bg-neon-blue text-black cursor-pointer' : 'bg-gray-800 text-gray-500 cursor-not-allowed'}`}
+                        className={`w-full font-bold py-3 rounded ${isIdLocked ? 'bg-neon-blue text-black cursor-pointer hover:bg-cyan-400' : 'bg-gray-800 text-gray-500 cursor-not-allowed'}`}
                     >
                         INITIATE SEQUENCE
                     </button>

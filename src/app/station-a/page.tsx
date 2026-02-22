@@ -46,7 +46,7 @@ export default function StationAPage() {
             </div>
 
             <div className="border border-white/10 rounded-xl p-2 bg-black/40 backdrop-blur-sm">
-                <LoopContainer />
+                <LoopContainer currentPhase={currentPhase} />
             </div>
 
             {/* Footer instruction for copy-paste */}
