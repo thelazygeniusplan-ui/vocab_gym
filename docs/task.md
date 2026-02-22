@@ -1,0 +1,45 @@
+# Vocab Gym V2.7 - Task List
+
+- [x] **Project Setup & Initialization** <!-- id: 0 -->
+    - [x] Initialize Next.js project with Tailwind CSS <!-- id: 1 -->
+    - [x] Configure "Cyber-Noir" theme (colors, fonts, globals.css) <!-- id: 2 -->
+    - [x] Set up project structure (components, lib, hooks, types) <!-- id: 3 -->
+- [/] **Core Architecture Implementation** <!-- id: 4 -->
+    - [x] Implement "Pedagogical Architect" logic (curriculum, hints) <!-- id: 5 -->
+    - [x] Implement "Software Developer" logic (API handlers, Supabase client) <!-- id: 6 -->
+    - [x] Implement "Asset Agent" logic (prompt generation placeholders) <!-- id: 7 -->
+    - [x] Implement "QC Agent" logic (validation functions) <!-- id: 8 -->
+- [x] **UI/UX Development** <!-- id: 9 -->
+    - [x] Create Layout and Navigation (Cyber-Noir style) <!-- id: 10 -->
+    - [x] Implement "Trainee Bot" Interface/Persona <!-- id: 11 -->
+    - [x] Build The 3-Loop Spiral Components (Loop 0-3) <!-- id: 12 -->
+    - [x] Build Sign-Off Module <!-- id: 13 -->
+- [x] **Integration & Polishing** <!-- id: 14 -->
+    - [x] Connect "Business Intelligence" metrics tracking <!-- id: 15 -->
+    - [x] Finalize "High-Friction" interactions <!-- id: 16 -->
+    - [x] Conduct internal verification (QC Agent check) <!-- id: 17 -->
+- [ ] **Modular Reality Pivot** <!-- id: 18 -->
+    - [x] Implement "Station A" (Student Dojo) for Gather.town <!-- id: 19 -->
+    - [x] Implement "Station B" (Facilitator Dashboard) for real-time monitoring <!-- id: 20 -->
+    - [x] Implement "Bundle 01" Corpus (Bolster, Anomalous, Ambivalent, Qualify, Paucity) <!-- id: 21 -->
+    - [x] Define "Station Rotation" flow (15-min Active Practice) <!-- id: 22 -->
+    - [x] Update "BI Agent" for Session Unit Economics <!-- id: 23 -->
+    - [/] Verify "Sign-Off Hash" copy-paste flow (QC Agent) <!-- id: 24 -->
+- [x] **Phase 3: Integration & Scaling** <!-- id: 25 -->
+    - [x] Implement real Supabase Client (Forgotten Factors / Fatigue) <!-- id: 26 -->
+    - [x] Generate Shotstack JSON for Bundle 01 <!-- id: 27 -->
+    - [x] Generate Bundles 02-05 (20 words) with Cryptic Hints <!-- id: 28 -->
+    - [x] Update BI Cost Model (Video Rendering Scale) <!-- id: 29 -->
+    - [x] Verify Completion Hash with Student ID <!-- id: 30 -->
+- [/] **Phase 4: Operational Deployment** <!-- id: 31 -->
+    - [x] Provision API Keys (Supabase, Shotstack, ElevenLabs) <!-- id: 32 -->
+    - [x] Configure `next.config.js` for Iframe Security <!-- id: 33 -->
+    - [x] Deploy to Vercel (Code on GitHub) <!-- id: 34 -->
+    - [/] Validate Station A in Gather.town Environment <!-- id: 35 -->
+- [x] **Phase 5: Content Production (Video)** <!-- id: 36 -->
+    - [x] Create `scripts/generate_assets.ts` (Shotstack Client) <!-- id: 37 -->
+    - [x] Batch Render Bundle 01 (Solved: Used Production Key) <!-- id: 38 -->
+    - [x] Update `Architect` Corpus with Real Video URLs <!-- id: 39 -->
+    - [x] **Enhance Video Assets** <!-- id: 40 -->
+        - [x] Update `AssetAgent` to include Background Image Layer <!-- id: 41 -->
+        - [x] Re-render `ephemeral` and Bundle 01 <!-- id: 42 -->
