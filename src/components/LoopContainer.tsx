@@ -2,9 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import TraineeBot from './TraineeBot';
-import SignOffModule from './SignOffModule';
 import { PedagogicalArchitect } from '@/lib/agents/architect';
 import { BusinessIntelligence } from '@/lib/agents/bi';
+import { logCompletion } from '@/lib/supabase_client';
 
 const PHASE_TO_LOOP: Record<string, 0 | 1 | 2 | 3> = {
     LOOP_0: 0, LOOP_1: 1, LOOP_2: 2, LOOP_3: 3,
@@ -12,15 +12,16 @@ const PHASE_TO_LOOP: Record<string, 0 | 1 | 2 | 3> = {
 
 interface LoopContainerProps {
     currentPhase?: 'LOOP_0' | 'LOOP_1' | 'LOOP_2' | 'LOOP_3';
+    studentId: string;
 }
 
-export default function LoopContainer({ currentPhase }: LoopContainerProps) {
+export default function LoopContainer({ currentPhase, studentId }: LoopContainerProps) {
     const [architect] = useState(() => new PedagogicalArchitect());
     const [bi] = useState(() => new BusinessIntelligence());
     const [currentLoop, setCurrentLoop] = useState<0 | 1 | 2 | 3>(0);
     const [wordIndex, setWordIndex] = useState(0);
     const [userInput, setUserInput] = useState('');
-    const [showSignOff, setShowSignOff] = useState(false);
+    const [wordComplete, setWordComplete] = useState(false);
 
     const curriculum = architect.getCurriculum();
     const currentItem = curriculum[wordIndex];
@@ -37,13 +38,10 @@ export default function LoopContainer({ currentPhase }: LoopContainerProps) {
         let isValid = false;
 
         if (currentLoop === 2) {
-            // Synthesis: own-words definition, any reasonable length
-            isValid = userInput.length > 3;
+            isValid = userInput.trim().length > 3;
         } else if (currentLoop === 3) {
-            // Mastery: correct the Trainee Bot — any substantive response qualifies
             isValid = userInput.trim().length > 10;
         } else {
-            // Loop 0 (Shadow) & Loop 1 (Cinema): type the word to confirm recognition
             isValid = userInput.toLowerCase().trim() === currentWord.toLowerCase();
         }
 
@@ -53,7 +51,9 @@ export default function LoopContainer({ currentPhase }: LoopContainerProps) {
                 setCurrentLoop((prev) => (prev + 1) as 0 | 1 | 2 | 3);
                 setUserInput('');
             } else {
-                setShowSignOff(true);
+                // Word mastered — log to Supabase and show completion screen
+                logCompletion(studentId, currentWord);
+                setWordComplete(true);
             }
         } else {
             const errorMsg =
@@ -67,16 +67,31 @@ export default function LoopContainer({ currentPhase }: LoopContainerProps) {
         }
     };
 
-    const handleSignOffComplete = () => {
-        bi.trackCost('Session Completion', 10);
-        setShowSignOff(false);
+    const handleNextWord = () => {
+        setWordComplete(false);
         setCurrentLoop(0);
         setWordIndex(prev => (prev + 1 < curriculum.length ? prev + 1 : 0));
         setUserInput('');
     };
 
-    if (showSignOff) {
-        return <SignOffModule onComplete={handleSignOffComplete} />;
+    // Word complete screen
+    if (wordComplete) {
+        return (
+            <div className="max-w-2xl mx-auto p-8 mt-10 border border-green-500/30 bg-green-500/5 backdrop-blur-sm rounded-xl text-center">
+                <div className="text-green-400 text-xs font-mono tracking-widest mb-4">WORD LOGGED</div>
+                <h2 className="text-4xl font-bold text-white mb-2">{currentWord.toUpperCase()}</h2>
+                <p className="text-gray-400 mb-8">Completion recorded for <span className="text-neon-purple">{studentId}</span>.</p>
+                <button
+                    onClick={handleNextWord}
+                    className="bg-neon-blue text-black font-bold px-8 py-3 rounded hover:bg-cyan-400 transition-colors"
+                >
+                    NEXT WORD →
+                </button>
+                {wordIndex + 1 >= curriculum.length && (
+                    <p className="text-gray-600 text-xs mt-4">All words complete. Cycling back to start.</p>
+                )}
+            </div>
+        );
     }
 
     const getLoopContent = () => {
@@ -120,9 +135,7 @@ export default function LoopContainer({ currentPhase }: LoopContainerProps) {
                     <div className="text-center">
                         <h2 className="text-2xl mb-4 text-red-500">LOOP 3: MASTERY CHECK</h2>
                         <TraineeBot message={architect.generateTraineeError(currentWord)} emotion="confused" />
-                        <p className="text-gray-400 text-sm mt-4">
-                            Type your correction (min 10 chars).
-                        </p>
+                        <p className="text-gray-400 text-sm mt-4">Type your correction (min 10 chars).</p>
                     </div>
                 );
         }

@@ -21,7 +21,7 @@ export default function Home() {
           </div>
         </header>
 
-        <LoopContainer />
+        <LoopContainer studentId="DEMO" />
       </div>
     </main>
   );
