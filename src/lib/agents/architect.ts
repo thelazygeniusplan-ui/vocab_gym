@@ -29,7 +29,7 @@ export class PedagogicalArchitect {
                 antonyms: ['undermine', 'weaken'],
                 contextSentence: 'He hoped the new evidence would bolster his argument.',
                 processingLevel: 'shadow',
-                videoUrl: "https://shotstack-api-v1-output.s3-ap-southeast-2.amazonaws.com/ozif3qkhuw/25143b38-6caa-427c-8a99-016066da79b2.mp4"
+                videoUrl: "/videos/bolster.mp4"
             },
             {
                 id: '2',
@@ -40,7 +40,7 @@ export class PedagogicalArchitect {
                 antonyms: ['normal', 'typical', 'standard'],
                 contextSentence: 'The scientist investigated the anomalous readings from the sensor.',
                 processingLevel: 'shadow',
-                videoUrl: "https://shotstack-api-v1-output.s3-ap-southeast-2.amazonaws.com/ozif3qkhuw/a7ed050b-efc6-42b3-923c-61bb3a1447ef.mp4"
+                videoUrl: "/videos/anomalous.mp4"
             },
             {
                 id: '3',
@@ -51,7 +51,7 @@ export class PedagogicalArchitect {
                 antonyms: ['certain', 'resolute', 'unequivocal'],
                 contextSentence: 'She felt ambivalent about the job offer, liking the pay but hating the commute.',
                 processingLevel: 'shadow',
-                videoUrl: "https://shotstack-api-v1-output.s3-ap-southeast-2.amazonaws.com/ozif3qkhuw/38ad54a4-b882-45b8-8d78-c48cd7ea5664.mp4"
+                videoUrl: "/videos/ambivalent.mp4"
             },
             {
                 id: '4',
@@ -62,7 +62,7 @@ export class PedagogicalArchitect {
                 antonyms: ['generalize', 'affirm'],
                 contextSentence: 'I must qualify my earlier praise; while good, it is not perfect.',
                 processingLevel: 'shadow',
-                videoUrl: "https://shotstack-api-v1-output.s3-ap-southeast-2.amazonaws.com/ozif3qkhuw/306023d7-6381-4331-bf52-dbde11b83045.mp4"
+                videoUrl: "/videos/qualify.mp4"
             },
             {
                 id: '5',
@@ -73,7 +73,7 @@ export class PedagogicalArchitect {
                 antonyms: ['abundance', 'surplus', 'plethora'],
                 contextSentence: 'There was a paucity of information regarding the incident.',
                 processingLevel: 'shadow',
-                videoUrl: "https://shotstack-api-v1-output.s3-ap-southeast-2.amazonaws.com/ozif3qkhuw/4abd5940-593b-4085-b015-5e6999261f61.mp4"
+                videoUrl: "/videos/paucity.mp4"
             },
             // Bundle 02
             {
@@ -85,7 +85,7 @@ export class PedagogicalArchitect {
                 antonyms: ['permanent'],
                 contextSentence: 'Fame is ephemeral.',
                 processingLevel: 'shadow',
-                videoUrl: "https://shotstack-api-v1-output.s3-ap-southeast-2.amazonaws.com/ozif3qkhuw/f48f85ed-dd00-4c86-9d43-ead5db256e36.mp4"
+                videoUrl: "/videos/ephemeral.mp4"
             },
             { id: '7', word: 'pragmatic', definition: 'Dealing with things sensibly and realistically.', category: 'Logic', synonyms: ['practical', 'sensible'], antonyms: ['idealistic'], contextSentence: 'A pragmatic approach to politics.', processingLevel: 'shadow' },
             { id: '8', word: 'venerable', definition: 'Accorded a great deal of respect, especially because of age, wisdom, or character.', category: 'Respect', synonyms: ['respected', 'distinguished'], antonyms: ['disreputable'], contextSentence: 'A venerable statesman.', processingLevel: 'shadow' },
