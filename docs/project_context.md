@@ -88,7 +88,7 @@ The `completions` table must be created manually in Supabase dashboard:
 ```
 NEXT_PUBLIC_SUPABASE_URL=https://zhjwugjshufbtnavrncd.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=sb_publishable_PbJkUD3Bgk6xuwDRAORKaw_Bo5B4WX-
-FACILITATOR_PASSWORD=coach123
+FACILITATOR_PASSWORD=<your password - keep it only in .env.local and Vercel>
 ```
 
 ### Vercel (must be added manually in Project Settings)
